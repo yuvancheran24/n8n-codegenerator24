@@ -6,11 +6,10 @@
 <title>Code Output Quiz</title>
 
 <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+/* --- CSS STYLES --- */
 * {
     margin: 0;
     padding: 0;
@@ -30,55 +29,13 @@ body {
     overflow-x: hidden;
 }
 
-/* Animated background elements */
-.bg-elements {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.bg-element {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(0, 194, 255, 0.1);
-    animation: float 15s infinite linear;
-}
-
-.bg-element:nth-child(1) {
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    left: 5%;
-    animation-delay: 0s;
-}
-
-.bg-element:nth-child(2) {
-    width: 200px;
-    height: 200px;
-    top: 60%;
-    left: 80%;
-    animation-delay: -5s;
-}
-
-.bg-element:nth-child(3) {
-    width: 150px;
-    height: 150px;
-    top: 20%;
-    left: 70%;
-    animation-delay: -10s;
-}
-
-.bg-element:nth-child(4) {
-    width: 250px;
-    height: 250px;
-    top: 70%;
-    left: 10%;
-    animation-delay: -7s;
-}
+/* Background elements */
+.bg-elements { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+.bg-element { position: absolute; border-radius: 50%; background: rgba(0, 194, 255, 0.1); animation: float 15s infinite linear; }
+.bg-element:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s; }
+.bg-element:nth-child(2) { width: 200px; height: 200px; top: 60%; left: 80%; animation-delay: -5s; }
+.bg-element:nth-child(3) { width: 150px; height: 150px; top: 20%; left: 70%; animation-delay: -10s; }
+.bg-element:nth-child(4) { width: 250px; height: 250px; top: 70%; left: 10%; animation-delay: -7s; }
 
 @keyframes float {
     0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
@@ -86,307 +43,113 @@ body {
     100% { transform: translateY(0) rotate(360deg); opacity: 0.7; }
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-.logo {
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 194, 255, 0.3);
-    background: #161b22;
-}
-
-.logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.brand-name {
-    color: #00c2ff;
-    font-size: 2.5rem;
-    text-shadow: 0 0 15px rgba(0, 194, 255, 0.3);
-}
-
-.header p {
-    color: #8b949e;
-    font-size: 1.1rem;
-}
+.header { text-align: center; margin-bottom: 30px; }
+.brand { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px; }
+.logo { width: 70px; height: 70px; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 194, 255, 0.3); background: #161b22; }
+.logo img { width: 100%; height: 100%; object-fit: cover; }
+.brand-name { color: #00c2ff; font-size: 2.5rem; text-shadow: 0 0 15px rgba(0, 194, 255, 0.3); }
+.header p { color: #8b949e; font-size: 1.1rem; }
 
 .quiz-title {
-    color: #f0f6fc;
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 1.4rem;
-    background: linear-gradient(135deg, #00c2ff, #ff6b6b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #f0f6fc; text-align: center; margin-bottom: 25px; font-size: 1.4rem;
+    background: linear-gradient(135deg, #00c2ff, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
 .editor-box {
-    width: 700px;
-    background: #161b22;
-    border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid #30363d;
-    position: relative;
-    z-index: 10;
+    width: 700px; background: #161b22; border-radius: 15px; padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); border: 1px solid #30363d; position: relative; z-index: 10;
 }
 
-.watermark {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: rgba(255, 255, 255, 0.3);
-    font-size: 12px;
-    font-style: italic;
-}
+.watermark { position: absolute; top: 15px; right: 20px; color: rgba(255, 255, 255, 0.3); font-size: 12px; font-style: italic; }
 
 .brand-footer {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(30, 34, 41, 0.9);
-    padding: 8px 15px;
-    border-radius: 8px;
-    border-left: 3px solid #00c2ff;
+    position: absolute; bottom: 20px; right: 20px; display: flex; align-items: center; gap: 10px;
+    background: rgba(30, 34, 41, 0.9); padding: 8px 15px; border-radius: 8px; border-left: 3px solid #00c2ff;
 }
+.brand-footer-logo { width: 65px; height: 65px; border-radius: 6px; overflow: hidden; }
+.brand-footer-logo img { width: 100%; height: 100%; object-fit: cover; }
+.brand-footer-name { color: #f0f6fc; font-size: 14px; font-weight: 600; }
+.brand-footer-handle { color: #00c2ff; font-size: 12px; }
 
-.brand-footer-logo {
-    width: 65px;
-    height: 65px;
-    border-radius: 6px;
-    overflow: hidden;
-}
-
-.brand-footer-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.brand-footer-name {
-    color: #f0f6fc;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.brand-footer-handle {
-    color: #00c2ff;
-    font-size: 12px;
-}
-
-.title-bar {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-    align-items: center;
-}
-
+.title-bar { display: flex; gap: 8px; margin-bottom: 20px; align-items: center; }
 .dot { width: 12px; height: 12px; border-radius: 50%; }
 .red { background:#40ccc5; }
 .yellow { background:#e1e6e5; }
 .green { background:#40ccc5; }
-
-.file-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 15px;
-}
-
+.file-info { display: flex; align-items: center; gap: 10px; margin-left: 15px; }
 .python-icon { color: #1cb4be; font-size: 18px; }
 .file-name { color: #f0f6fc; font-size: 16px; font-weight: 600; }
 
 .code-container {
-    background: #0d1117;
-    padding: 25px;
-    border-radius: 10px;
-    font-size: 14px;
-    overflow-x: auto;
-    border: 1px solid #30363d;
-    margin: 0;
-    min-height: 300px;
-    direction: ltr;
-    text-align: left;
-    position: relative;
+    background: #0d1117; padding: 25px; border-radius: 10px; font-size: 14px;
+    overflow-x: auto; border: 1px solid #30363d; margin: 0; min-height: 300px;
+    direction: ltr; text-align: left; position: relative;
 }
 
-pre {
-    background: transparent !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    direction: ltr;
-    text-align: left;
+/* Crucial styles for the editor */
+pre { margin: 0 !important; border: none !important; background: transparent !important; }
+code { font-family: 'Fira Code', 'Consolas', monospace !important; line-height: 1.5; white-space: pre-wrap !important; }
+
+/* The editable area style */
+.editable-code {
+    outline: none;
+    min-height: 250px;
+    display: block;
+    caret-color: #00c2ff; 
+    color: #f0f6fc;
 }
 
-code {
-    font-family: 'Fira Code', 'Consolas', monospace !important;
-    line-height: 1.5;
-    direction: ltr;
-    text-align: left;
-    white-space: pre-wrap !important; /* Important for wrapping */
-    word-break: break-word;
-}
-
-.controls {
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-    justify-content: center;
-}
-
+.controls { display: flex; gap: 15px; margin-top: 25px; justify-content: center; }
 button {
-    background: linear-gradient(135deg, #00c2ff, #0099cc);
-    color: white;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(0, 194, 255, 0.3);
+    background: linear-gradient(135deg, #00c2ff, #0099cc); color: white; padding: 12px 25px;
+    border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s;
+    display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0, 194, 255, 0.3);
 }
-
 button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 194, 255, 0.4); }
-
 button.secondary { background: linear-gradient(135deg, #8b949e, #6e7681); }
 button.secondary:hover { box-shadow: 0 6px 20px rgba(139, 148, 158, 0.4); }
 
 .screenshot-preview {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9); z-index: 1000; justify-content: center;
+    align-items: center; flex-direction: column; padding: 20px;
 }
-
-.preview-image {
-    max-width: 90%;
-    max-height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.preview-image canvas {
-    border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
-    border: 1px solid #30363d;
-    display: block;
-    margin: 0 auto;
-}
-
+.preview-image { max-width: 90%; max-height: 80%; display: flex; justify-content: center; align-items: center; }
+.preview-image canvas { border-radius: 20px; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7); border: 1px solid #30363d; display: block; margin: 0 auto; }
 .preview-actions { margin-top: 20px; display: flex; gap: 15px; }
 
 .answer-section {
-    margin-top: 20px;
-    padding: 15px;
-    background: #1e2229;
-    border-radius: 8px;
-    border-left: 4px solid #00c2ff;
-    display: none;
+    margin-top: 20px; padding: 15px; background: #1e2229; border-radius: 8px;
+    border-left: 4px solid #00c2ff; display: none;
 }
-
 .answer-section h3 { color: #00c2ff; margin-bottom: 10px; }
 .answer-section pre { background: #0d1117 !important; padding: 15px; margin-top: 10px; }
 
-.editable-code {
-    outline: none;
-    white-space: pre-wrap;
-    word-break: break-word;
-    min-height: 250px;
-    display: block;
-    caret-color: #00c2ff; /* Makes cursor visible and blue */
-}
-
 .toast {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #00c2ff;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 194, 255, 0.4);
-    z-index: 1001;
-    display: none;
-    align-items: center;
-    gap: 10px;
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    background: #00c2ff; color: white; padding: 12px 20px; border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 194, 255, 0.4); z-index: 1001;
+    display: none; align-items: center; gap: 10px;
 }
-
 .toast.show { display: flex; animation: fadeInOut 3s ease-in-out; }
+@keyframes fadeInOut { 0% { opacity: 0; bottom: 0; } 20% { opacity: 1; bottom: 20px; } 80% { opacity: 1; bottom: 20px; } 100% { opacity: 0; bottom: 0; } }
 
-@keyframes fadeInOut {
-    0% { opacity: 0; bottom: 0; }
-    20% { opacity: 1; bottom: 20px; }
-    80% { opacity: 1; bottom: 20px; }
-    100% { opacity: 0; bottom: 0; }
-}
-
-/* Screenshot Styles */
+/* Screenshot Specific Styles */
 .screenshot-wrapper { width: auto; display: flex; justify-content: center; align-items: center; }
 .screenshot-container {
-    width: 800px;
-    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
-    border: 1px solid #30363d;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
+    width: 800px; background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    border-radius: 20px; padding: 40px; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    border: 1px solid #30363d; position: relative; overflow: hidden; margin: 0 auto;
 }
 .screenshot-header { text-align: center; margin-bottom: 30px; }
 .screenshot-brand { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px; }
-.screenshot-logo {
-    width: 80px; height: 80px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    overflow: hidden; box-shadow: 0 4px 15px rgba(0, 194, 255, 0.3); background: #161b22;
-}
+.screenshot-logo { width: 80px; height: 80px; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 194, 255, 0.3); background: #161b22; }
 .screenshot-logo img { width: 100%; height: 100%; object-fit: cover; }
 .screenshot-brand-name { color: #00c2ff; font-size: 2.8rem; text-shadow: 0 0 15px rgba(0, 194, 255, 0.3); }
-.screenshot-title {
-    color: #f0f6fc; text-align: center; margin-bottom: 25px; font-size: 1.4rem;
-    background: linear-gradient(135deg, #00c2ff, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
+.screenshot-title { color: #f0f6fc; text-align: center; margin-bottom: 25px; font-size: 1.4rem; background: linear-gradient(135deg, #00c2ff, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .screenshot-editor-box { background: #161b22; border-radius: 15px; padding: 30px; border: 1px solid #30363d; position: relative; }
 .screenshot-watermark { position: absolute; top: 15px; right: 20px; color: rgba(255, 255, 255, 0.3); font-size: 12px; font-style: italic; }
-.screenshot-footer {
-    position: absolute; bottom: 20px; right: 20px; display: flex; align-items: center; gap: 10px;
-    background: rgba(30, 34, 41, 0.9); padding: 8px 15px; border-radius: 8px; border-left: 3px solid #00c2ff;
-}
+.screenshot-footer { position: absolute; bottom: 20px; right: 20px; display: flex; align-items: center; gap: 10px; background: rgba(30, 34, 41, 0.9); padding: 8px 15px; border-radius: 8px; border-left: 3px solid #00c2ff; }
 .screenshot-footer-logo { width: 65px; height: 65px; border-radius: 6px; overflow: hidden; }
 .screenshot-footer-logo img { width: 100%; height: 100%; object-fit: cover; }
 .screenshot-footer-name { color: #f0f6fc; font-size: 14px; font-weight: 600; }
@@ -399,26 +162,19 @@ button.secondary:hover { box-shadow: 0 6px 20px rgba(139, 148, 158, 0.4); }
 .screenshot-file-info { display: flex; align-items: center; gap: 10px; margin-left: 15px; }
 .screenshot-python-icon { color: #1cb4be; font-size: 18px; }
 .screenshot-file-name { color: #f0f6fc; font-size: 16px; font-weight: 600; }
-.screenshot-code-container {
-    background: #0d1117; padding: 25px; border-radius: 10px; font-size: 15px;
-    overflow-x: auto; border: 1px solid #30363d; margin: 0; min-height: 320px; direction: ltr; text-align: left;
-}
+.screenshot-code-container { background: #0d1117; padding: 25px; border-radius: 10px; font-size: 15px; overflow-x: auto; border: 1px solid #30363d; margin: 0; min-height: 320px; direction: ltr; text-align: left; }
 .screenshot-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
 .screenshot-bg-element { position: absolute; border-radius: 50%; background: rgba(0, 194, 255, 0.1); animation: preview-float 20s infinite linear; }
 .screenshot-bg-element:nth-child(1) { width: 200px; height: 200px; top: 10%; left: 5%; animation-delay: 0s; }
 .screenshot-bg-element:nth-child(2) { width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: -5s; }
 .screenshot-bg-element:nth-child(3) { width: 100px; height: 100px; top: 20%; left: 70%; animation-delay: -10s; }
 
-@keyframes preview-float {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
-    50% { transform: translateY(-15px) rotate(180deg); opacity: 0.3; }
-    100% { transform: translateY(0) rotate(360deg); opacity: 0.7; }
-}
+@keyframes preview-float { 0% { transform: translateY(0) rotate(0deg); opacity: 0.7; } 50% { transform: translateY(-15px) rotate(180deg); opacity: 0.3; } 100% { transform: translateY(0) rotate(360deg); opacity: 0.7; } }
 
 @media (max-width: 768px) {
     .editor-box { width: 95%; padding: 20px; }
     .code-container { min-height: 250px; padding: 15px; }
-    .editable-code { -webkit-user-select: text; -webkit-tap-highlight-color: transparent; min-height: 200px; }
+    .editable-code { min-height: 200px; }
     .controls { flex-direction: column; align-items: center; }
     button { width: 100%; max-width: 250px; }
 }
@@ -465,7 +221,7 @@ button.secondary:hover { box-shadow: 0 6px 20px rgba(139, 148, 158, 0.4); }
     </div>
 
     <div class="code-container">
-        <pre><code class="language-python editable-code" id="codeBlock" contenteditable="true" spellcheck="false"></code></pre>
+        <code class="language-python editable-code" id="codeBlock"></code>
     </div>
     
     <div class="answer-section" id="answerSection">
@@ -527,9 +283,13 @@ button.secondary:hover { box-shadow: 0 6px 20px rgba(139, 148, 158, 0.4); }
 </div>
 
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codejar/3.2.0/codejar.min.js"></script>
+
 <script>
-// Quiz code with interesting output
-let quizCode = `def tricky_function():
+// --- INITIAL DATA ---
+let initialCode = `def tricky_function():
     x = [1, 2, 3]
     y = x
     y.append(4)
@@ -538,77 +298,46 @@ let quizCode = `def tricky_function():
 result = tricky_function()
 print(result)`;
 
-// Expected output
 let expectedOutput = `[1, 2, 3, 4]`;
 
-// Initialize code with Prism highlighting
+// --- DOM ELEMENTS ---
 const codeElement = document.getElementById("codeBlock");
 const outputElement = document.getElementById("outputBlock");
 const answerSection = document.getElementById("answerSection");
 
-codeElement.textContent = quizCode;
-Prism.highlightElement(codeElement);
-
-// --- FIXED CODE EDITOR LOGIC ---
-
-// 1. Update the quizCode variable when typing, but DO NOT re-highlight continuously
-// Re-highlighting on every keypress breaks the cursor position
-codeElement.addEventListener('input', function() {
-    // Just update the variable text
-    quizCode = this.innerText; 
+// --- CODEJAR SETUP (The Fix) ---
+// CodeJar takes the element and a highlight function
+const jar = CodeJar(codeElement, (editor) => {
+    // We must pass the editor content to Prism
+    Prism.highlightElement(editor);
 });
 
-// 2. Re-highlight when the user clicks away (Blur)
-// This restores the pretty colors when you are done typing
-codeElement.addEventListener('blur', function() {
-    Prism.highlightElement(codeElement);
-});
+// Load the initial code into the editor
+jar.updateCode(initialCode);
 
-// 3. Handle Enter and Tab keys properly
-codeElement.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        // The Magic Fix: use execCommand to insert a real New Line (\n)
-        document.execCommand('insertText', false, '\n');
-        return;
-    }
-    
-    if (e.key === 'Tab') {
-        e.preventDefault();
-        // Insert 4 spaces for tab
-        document.execCommand('insertText', false, '    ');
-        return;
-    }
-});
-// --- END FIXED LOGIC ---
-
+// --- SCREENSHOT LOGIC ---
 function takeScreenshot() {
-    // Force highlight before screenshot to ensure it looks good
-    Prism.highlightElement(codeElement);
-
-    // Create a wrapper to ensure proper centering
+    // 1. Create a wrapper to hold the screenshot off-screen
     const screenshotWrapper = document.createElement('div');
     screenshotWrapper.className = 'screenshot-wrapper';
-    
     screenshotWrapper.style.position = 'absolute';
     screenshotWrapper.style.top = '0';
     screenshotWrapper.style.left = '-9999px';
     
-    // Create a custom container for the screenshot
+    // 2. Create the container
     const screenshotContainer = document.createElement('div');
     screenshotContainer.className = 'screenshot-container';
     
-    // Add background elements
-    const bgElements = document.createElement('div');
-    bgElements.className = 'screenshot-bg';
-    bgElements.innerHTML = `
-        <div class="screenshot-bg-element"></div>
-        <div class="screenshot-bg-element"></div>
-        <div class="screenshot-bg-element"></div>
+    // Background
+    screenshotContainer.innerHTML = `
+        <div class="screenshot-bg">
+            <div class="screenshot-bg-element"></div>
+            <div class="screenshot-bg-element"></div>
+            <div class="screenshot-bg-element"></div>
+        </div>
     `;
-    screenshotContainer.appendChild(bgElements);
     
-    // Create header
+    // Header
     const header = document.createElement('div');
     header.className = 'screenshot-header';
     header.innerHTML = `
@@ -622,17 +351,17 @@ function takeScreenshot() {
     `;
     screenshotContainer.appendChild(header);
     
-    // Create editor box
+    // Editor Box
     const editorBox = document.createElement('div');
     editorBox.className = 'screenshot-editor-box';
     
-    // Add watermark
+    // Watermark
     const watermark = document.createElement('div');
     watermark.className = 'screenshot-watermark';
-    watermark.textContent = '';
+    watermark.textContent = '@mr_programmer_24';
     editorBox.appendChild(watermark);
     
-    // Add footer
+    // Footer
     const footer = document.createElement('div');
     footer.className = 'screenshot-footer';
     footer.innerHTML = `
@@ -646,13 +375,13 @@ function takeScreenshot() {
     `;
     editorBox.appendChild(footer);
     
-    // Add quiz title
+    // Title
     const quizTitle = document.createElement('div');
     quizTitle.className = 'screenshot-title';
     quizTitle.textContent = 'What will be the output of the following code?';
     editorBox.appendChild(quizTitle);
     
-    // Add title bar
+    // Title Bar
     const titleBar = document.createElement('div');
     titleBar.className = 'screenshot-title-bar';
     titleBar.innerHTML = `
@@ -666,28 +395,29 @@ function takeScreenshot() {
     `;
     editorBox.appendChild(titleBar);
     
-    // Add code container
+    // Code Container (Rebuilding it for the screenshot)
     const codeContainer = document.createElement('div');
     codeContainer.className = 'screenshot-code-container';
     
-    // Create pre and code elements for the code
     const pre = document.createElement('pre');
     const code = document.createElement('code');
     code.className = 'language-python';
-    // Use current content of the editor
-    code.textContent = codeElement.innerText; 
+    
+    // IMPORTANT: Get the code from CodeJar, not innerText
+    code.textContent = jar.toString();
+    
     pre.appendChild(code);
     codeContainer.appendChild(pre);
-    
     editorBox.appendChild(codeContainer);
     screenshotContainer.appendChild(editorBox);
     screenshotWrapper.appendChild(screenshotContainer);
     
     document.body.appendChild(screenshotWrapper);
     
-    // Apply Prism highlighting to the screenshot code
+    // Highlight the screenshot code explicitly
     Prism.highlightElement(code);
     
+    // Capture
     html2canvas(screenshotContainer, {
         scale: 2,
         backgroundColor: null,
@@ -704,14 +434,13 @@ function takeScreenshot() {
         preview.appendChild(canvas);
         
         document.getElementById("screenshotPreview").style.display = 'flex';
-        
         document.body.removeChild(screenshotWrapper);
     }).catch(error => {
         console.error('Screenshot error:', error);
         if (document.body.contains(screenshotWrapper)) {
             document.body.removeChild(screenshotWrapper);
         }
-        showToast('Error taking screenshot. Please try again.');
+        showToast('Error taking screenshot.');
     });
 }
 
@@ -731,7 +460,8 @@ function closePreview() {
 }
 
 function copyCode() {
-    navigator.clipboard.writeText(codeElement.innerText).then(() => {
+    // Get code from Jar
+    navigator.clipboard.writeText(jar.toString()).then(() => {
         showToast('Quiz code copied to clipboard!');
     });
 }
@@ -753,6 +483,7 @@ function showToast(message) {
     }, 3000);
 }
 
+// Function to update branding dynamically if needed
 function updateBranding(logoImageUrl, brandName, instagramHandle) {
     const logo = document.querySelector('.logo');
     const brand = document.querySelector('.brand-name');
@@ -770,6 +501,7 @@ function updateBranding(logoImageUrl, brandName, instagramHandle) {
     footerHandle.textContent = `@${instagramHandle}`;
 }
 
+// Initialize branding
 updateBranding(
     'https://i.ibb.co/dwHRbkBZ/photo-2025-11-16-15-31-47.jpg',
     'ᴍʀ ᴘʀᴏɢʀᴀᴍᴍᴇʀ',
